@@ -32,6 +32,5 @@ function calExpirationDate(strDate, term) {
         }
     } else month += term
 
-
     return new Date(`${year}.${month}.${day}`)
 }
