@@ -16,12 +16,8 @@ function solution(today, terms, privacies) {
 }
 
 function calExpirationDate(strDate, term) {
-    const date = new Date(strDate)
-    
-    let year = date.getFullYear()
-    let month = date.getMonth() + 1
-    let day = date.getDate()
-    
+    let [year, month, day] = strDate.split('.').map(date => parseInt(date))
+
     if(month + term > 12) {
         year += parseInt((month + term)/12)
         month = (month + term)%12
