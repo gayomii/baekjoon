@@ -6,10 +6,11 @@ function solution(k, tangerine) {
         obj[item] ? obj[item] += 1 : obj[item] = 1
         return obj
     }, {})
-    const tangerineArr = Object.entries(tangerineObj).sort((a, b) => b[1] - a[1])
-    tangerineArr.forEach(item => {
+    
+    const tangerineCntArr = Object.values(tangerineObj).sort((a, b) => b - a)
+    tangerineCntArr.forEach(item => {
         if(cnt <= 0) return
-        cnt -= item[1]
+        cnt -= item
         answer++
     })
 
