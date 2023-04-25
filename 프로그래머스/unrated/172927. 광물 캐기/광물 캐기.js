@@ -1,12 +1,13 @@
 function solution(picks, minerals) {
     let answer = 0
     let cntMinerals = []
+    let [diamond, iron, stone] = picks
     const picksCnt = picks.reduce((sum, pick) => sum += pick, 0)
     
     for(let i=0; i<minerals.length; i+=5) {
-        const min = minerals.slice(i, i+5)
-        cntMinerals.push(min.reduce((result, mineral) => {
-            result[mineral] += 1
+        const mineral = minerals.slice(i, i+5)
+        cntMinerals.push(mineral.reduce((result, item) => {
+            result[item] += 1
             return result
         }, {diamond: 0, iron: 0, stone: 0}))
     }
@@ -24,15 +25,15 @@ function solution(picks, minerals) {
     })
 
     cntMinerals.forEach(mineral => {
-        if(picks[0]) {
+        if(diamond) {
             answer += mineral.diamond + mineral.iron + mineral.stone
-            picks[0]--
-        } else if(picks[1]) {
+            diamond--
+        } else if(iron) {
             answer += mineral.diamond*5 + mineral.iron + mineral.stone
-            picks[1]--    
+            iron--    
         } else {
             answer += mineral.diamond*25 + mineral.iron*5 + mineral.stone
-            picks[2]--
+            stone--
         }
     })
 
