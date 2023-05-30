@@ -76,10 +76,3 @@ function solution(n, k, enemy) {
 
   return answer
 }
-
-// // test case 	99, 1, [100, 4, 3]
-// const n = 99
-// const k = 1
-// const enemy = [100, 4, 3]
-
-// console.log(solution(n, k, enemy))
