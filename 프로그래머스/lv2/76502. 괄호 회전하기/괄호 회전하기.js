@@ -9,7 +9,7 @@ function solution(s) {
     
     sCase.forEach(item => {
         let stack = []
-        for(let i=0; i<item.length; i++) {
+        for(let i=0; i<LEN; i++) {
             if(item[i] === '(' || item[i] === '{' || item[i] === '[') stack.push(item[i])
             else {
                 if(stack.length) {
@@ -23,7 +23,7 @@ function solution(s) {
                     }
                 } else break
             }
-            if(i===item.length-1 && !stack.length) answer++
+            if(i===LEN-1 && !stack.length) answer++
         }
     })
     return answer
