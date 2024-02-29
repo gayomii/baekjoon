@@ -5,14 +5,11 @@ function solution(ingredient) {
     // 빵-야채-고기-빵 (1,2,3,1)
     for(let i=0; i<ingredient.length; i++) {
         stack.push(ingredient[i])
-        if(stack.length >= 4) {
-            if(ingredient[i] === 1) {
-                if(stack.slice(-4).join('') === '1231') {
+        if(stack.length >= 4 && ingredient[i] === 1) {
+            if(stack.slice(-4).join('') === '1231') {
                 stack.splice(-4)
                 answer++
             }
-            }
-            
         }
     }
     
