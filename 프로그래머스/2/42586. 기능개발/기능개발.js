@@ -1,20 +1,21 @@
 function solution(progresses, speeds) {
     const answer = []
-    
-    const days = progresses.map((progress, i) => Math.ceil((100-progress)/speeds[i]))
-    let bepo = days[0]
+    let bepo = 0
     let cnt = 1
-
-    for(let i=1; i<days.length; i++) {
-        if(bepo >= days[i]) cnt++
+    
+    progresses.map((progress, i) => {
+        const finish = Math.ceil((100-progress)/speeds[i])
+        if(!bepo) bepo = finish
         else {
-            answer.push(cnt)
-            cnt = 1
-            bepo = days[i]
+            if(bepo >= finish) cnt++
+            else {
+                answer.push(cnt)
+                cnt = 1
+                bepo = finish
+            }
         }
-    }
-    
+    })
+
     answer.push(cnt)
-    
     return answer
 }
