@@ -18,7 +18,7 @@ function solution(total, fretLen, play) {
     const [line, fret] = play[i];
     if (maxNum[line - 1] > fret) {
       const originLen = tmp[line - 1].length;
-      tmp[line - 1] = [...tmp[line - 1].filter((f) => f <= fret)];
+      tmp[line - 1] = tmp[line - 1].filter((f) => f <= fret);
       answer += originLen - tmp[line - 1].length;
 
       if (tmp[line - 1].indexOf(fret) === -1) {
