@@ -5,22 +5,22 @@ const [N, S] = input.splice(0, 2).map((d) => Number(d));
 
 function solution(N, S, p) {
   let answer = 0;
-  const strLen = 2 * N + 1;
-  let resultStr = '';
+  let i = 0;
+  let tmp = 0;
 
-  for (let x = 0; x < strLen; x++) {
-    if (x % 2 === 0) resultStr += 'I';
-    else resultStr += 'O';
-  }
-
-  for (let i = 0; i < S; i++) {
+  while (i < S) {
     if (p[i] === 'I') {
-      const checkStr = p.slice(i, i + strLen);
+      if (p[i + 1] === 'O' && p[i + 2] === 'I') {
+        tmp++;
+        i++;
 
-      if (checkStr.length === strLen) {
-        if (checkStr === resultStr) answer++;
-      }
-    }
+        if (tmp === N) {
+          answer++;
+          tmp--;
+        }
+      } else tmp = 0;
+    } else tmp = 0;
+    i++;
   }
 
   return answer;
